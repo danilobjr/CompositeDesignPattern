@@ -1,0 +1,6 @@
+Composite = {
+    
+    Model: {},
+    Templates: {},
+    Behavior: {}
+}

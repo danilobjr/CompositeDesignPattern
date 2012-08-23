@@ -1,0 +1,11 @@
+.treeview ul {
+    -webkit-transition: display 600ms;
+}
+
+ul.show {
+    display: block;
+}
+
+ul.hide {
+    display: none;
+}
