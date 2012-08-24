@@ -1,0 +1,9 @@
+@-webkit-keyframes shake {
+    0% { left: -20px; }
+    5% { left: -40px; }
+    10% { left: 0px; }
+    15% { left: -40px; }
+    20% { left: 0px; }
+    25% { left: -20px; }
+    100% { left: -20px; }
+}

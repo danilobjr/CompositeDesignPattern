@@ -1008,7 +1008,25 @@ img.back-to
 	left: -12px;
 }
 
-img.js-file
+.demo a
 {
-	height: 50px;
+    position: relative;
+    float: none;
+    left: -20px;
+    margin: 0;
+    text-align: center;
+    
+    -webkit-transition: -webkit-transform 200ms;
+    
+    -webkit-animation-name: shake;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-delay: 500ms;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: ease-in-out;
+}
+
+.demo a:hover 
+{
+    -webkit-transform: scale(1.1);
+    -webkit-animation: initial;
 }
