@@ -1,19 +1,24 @@
 Composite.Behavior.TreeView = function() {
 
-    var showOrHide = function(element) {
+    var showOrHide = function(figure) {
 
-        element = $(element);
+        figure = $(figure);
+        var ul = figure.siblings('ul');
 
-        if(element.is(':visible')) {
-            element.removeClass('show').addClass('hide');
-        }
-        else {
-            element.removeClass('hide').addClass('show');
+        if(ul.length && figure.hasClass('active')) {
+            if(ul.is(':visible')) {
+                figure.children('img').attr('src', 'images/pasta.png');
+                ul.hide();
+            }
+            else {
+                figure.children('img').attr('src', 'images/pasta_aberta.png');
+                ul.show();
+            }
         }
     };
 
-    var active = function(context, element) {
-        $('figure', context).removeClass('active');
+    var active = function(treeView, element) {
+        $('figure', treeView).removeClass('active');
         $(element).addClass('active');
     };
 
@@ -21,10 +26,27 @@ Composite.Behavior.TreeView = function() {
         $(context).remove();
     };
 
+    var addElement = function(parentId, newElement, elementType) {
+        var ul = $('figure[data-id-elemento=' + parentId + ']').siblings('ul');
+
+        if(!ul.length) {
+            var parentLi = $('figure[data-id-elemento=' + parentId + ']').parent();
+            ul = $('<ul>').appendTo(parentLi);
+        }
+
+        if(elementType === 'pasta') {
+            ul.prepend(newElement);
+        }
+        else {
+            newElement.appendTo(ul);
+        }
+    };
+
     return {
         showOrHide: showOrHide,
         active: active,
-        removeAllElements: removeAllElements
+        removeAllElements: removeAllElements,
+        addElement: addElement
     }
 
 } ();

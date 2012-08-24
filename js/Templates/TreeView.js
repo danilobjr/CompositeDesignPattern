@@ -11,7 +11,7 @@ Composite.Templates.TreeView = function() {
         $.each(data.elementos, function(indice, elemento) {
 
             var li = $('<li>');
-            var figure = $('<figure>').addClass(elemento.tipo).appendTo(li);
+            var figure = $('<figure>').attr('data-id-elemento', elemento.id).addClass(elemento.tipo).appendTo(li);
             var img = $('<img>').attr({
                 src: 'images/' + elemento.tipo + '.png',
                 alt: elemento.tipo
@@ -19,7 +19,7 @@ Composite.Templates.TreeView = function() {
             var figcaption = $('<figcaption>').text(elemento.tipo).appendTo(figure);
 
             if(elemento.filhos.length) {
-                li.append(renderizarNiveisInternos(elemento, tipoElemento));
+                li.append(renderizarNiveisInternos(elemento));
             }
 
             li.appendTo(ulRaiz);
@@ -28,21 +28,15 @@ Composite.Templates.TreeView = function() {
         return ulRaiz;
     }
 
-    var renderizarNiveisInternos = function(elemento, tipoElemento) {
-        var ul = $('<ul>').addClass('hide');
+    var renderizarNiveisInternos = function(elemento) {
+        var ul = $('<ul>').hide();
 
         $.each(elemento.filhos, function(indice, filho) {
 
-            var li = $('<li>');
-            var figure = $('<figure>').addClass(filho.tipo).appendTo(li);
-            var img = $('<img>').attr({
-                src: 'images/' + filho.tipo + '.png',
-                alt: filho.tipo
-            }).appendTo(figure);
-            var figcaption = $('<figcaption>').text(filho.tipo).appendTo(figure);
+            var li = renderizarLi(filho);
 
             if(filho.filhos.length) {
-                li.append(renderizarNiveisInternos(filho, tipoElemento));
+                li.append(renderizarNiveisInternos(filho));
             }
 
             li.appendTo(ul);
@@ -51,8 +45,21 @@ Composite.Templates.TreeView = function() {
         return ul;
     }
 
+    var renderizarLi = function(novoElemento) {
+        var li = $('<li>');
+        var figure = $('<figure>').attr('data-id-elemento', novoElemento.id).addClass(novoElemento.tipo).appendTo(li);
+        var img = $('<img>').attr({
+            src: 'images/' + novoElemento.tipo + '.png',
+            alt: novoElemento.tipo
+        }).appendTo(figure);
+        var figcaption = $('<figcaption>').text(novoElemento.tipo).appendTo(figure);
+
+        return li;
+    };
+
     return {
-        renderizar: renderizar
+        renderizar: renderizar,
+        renderizarLi: renderizarLi
     }
 
 } ();

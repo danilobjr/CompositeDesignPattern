@@ -785,6 +785,16 @@ figure.diagram figcaption
 	font-style: italic;
 }
 
+.menu-bar img.enabled
+{
+    display: block;
+}
+
+.menu-bar img.disabled
+{
+    display: none;
+}
+
 .treeview ul
 {
     margin: 0;
@@ -800,7 +810,13 @@ figure.diagram figcaption
     content: none;
 }
 
-section.treeview > ul figure
+.treeview .content > ul
+{
+    position: relative;
+    top: -15px;
+}
+
+section.treeview .content > ul figure
 {
 	float: left;
     width: 100%;
@@ -814,17 +830,17 @@ section.treeview > ul figure
 	border-radius: 3px;
 }
 
-section.treeview > ul figure.last
+section.treeview .content > ul figure.last
 {
 	margin: 0;
 }
 
-section.treeview > ul figure img
+section.treeview .content > ul figure img
 {    
     float: left;
 }
 
-section.treeview > ul figure figcaption
+section.treeview .content > ul figure figcaption
 {
     position: relative;
     float: left;
@@ -833,7 +849,7 @@ section.treeview > ul figure figcaption
 	line-height: 14px;	
 }
 
-section.treeview > ul figure:hover
+section.treeview .content > ul figure:hover
 {
 	cursor: pointer;
 	
@@ -846,7 +862,7 @@ section.treeview > ul figure:hover
     */
 }
 
-.treeview > ul figure.active, .treeview > ul figure.active:hover
+.treeview .content > ul figure.active, .treeview .content > ul figure.active:hover
 {
     border: 1px solid #999;
 	color: #333;
@@ -860,10 +876,17 @@ section.treeview > ul figure:hover
     padding: 2px;
 	height: 450px;	
 	width: 778px;
-	
+
 	border: 1px solid #BBB;	
 	border-radius: 4px;
 	background-color: #FCFCFC;
+}
+
+.treeview .content
+{
+    overflow-y: auto;
+    height: 356px;
+    margin-top: 5px;
 }
 
 section.treeview header
@@ -874,71 +897,6 @@ section.treeview header
 	color: white;
 	font-weight: bold;	
 	border-radius: 3px;
-}
-
-section.treeview > div > div
-{
-	margin: 30px auto;
-}
-
-section.treeview div.scripts
-{	
-	width: 61px;
-}
-
-section.treeview div.app
-{
-	width: 54px;
-}
-
-section.treeview div.app-children
-{
-	width: 333px;
-}
-
-section.treeview div.views-root
-{
-	width: 52px;
-}
-
-section.treeview div.view-usuario-root
-{
-	width: 66px;
-}
-
-section.treeview div.view-grupo-root
-{
-	width: 57px;
-}
-
-section.treeview div.main-root
-{
-	width: 52px;
-}
-
-section.treeview div.componentes-root
-{
-	width: 103px;
-}
-
-section.treeview div.views-children
-{
-	width: 186px;
-}
-
-section.treeview div.main-children
-{
-	width: 267px;
-}
-
-section.treeview div.componentes-children
-{
-	width: 469px;
-}
-
-section.treeview div.top-namespaces
-{
-	width: 350px;
 }
 
 .menu-bar {
